@@ -19,7 +19,7 @@ O servidor por padrão escuta na porta 3000
 
 Clone o projeto
 
-```shell
+```text
   git clone https://github.com/leonardo2000almeida/controller-test.git
 ```
 
