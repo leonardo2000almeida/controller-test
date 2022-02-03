@@ -19,26 +19,26 @@ O servidor por padrão escuta na porta 3000
 
 Clone o projeto
 
-```programming
+```shell
   git clone https://github.com/leonardo2000almeida/controller-test.git
 ```
 
 Va para a pasta do raiz do repositório
 
-```
+```shell
 cd nome_repositorio
 ```
 
 
 instale as dependências
 
-```bash
+```shell
   npm install
 ```
 
 Rode as migrations:
 
-```node
+```shell
 npm run typeorm migration:run
 ```
 
@@ -48,7 +48,7 @@ Modifique o arquivo .env citado na seção abaixo.
 
 Após modificar o arquivo, rode o comando
 
-```node
+```shell
 npm run dev
 ```
 ## Variaveis de ambiente
