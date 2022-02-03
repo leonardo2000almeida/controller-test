@@ -92,7 +92,7 @@ Para rodar esse projeto é necessário editar o arquivo src/infrastructure/confi
 #
 #### Atualiza um contato, menos o status
 
-```
+```http
 PUT localhost:3000/contact/:id
 ```
 
@@ -114,7 +114,7 @@ PUT localhost:3000/contact/:id
 
 #### Ativa um contato
 
-```
+```http
 PUT localhost:3000/contact/:id/active
 ```
 
@@ -126,7 +126,7 @@ PUT localhost:3000/contact/:id/active
 
 #### Desativa um contato
 
-```
+```http
 DEL localhost:3000/contact/:id
 ```
 
