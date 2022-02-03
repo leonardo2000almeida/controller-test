@@ -42,7 +42,7 @@ Rode as migrations:
 npm run typeorm migration:run
 ```
 
-Modifique o arquivo .env citado na [https://github.com/leonardo2000almeida/controller-test/blob/main/README.md#variaveis-de-ambiente](seção abaixo.)
+Modifique o arquivo .env citado na [#variaveis-de-ambiente](seção abaixo.)
 
 #
 
