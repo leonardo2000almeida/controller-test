@@ -42,7 +42,7 @@ Rode as migrations:
 npm run typeorm migration:run
 ```
 
-Modifique o arquivo .env citado na seção abaixo.
+Modifique o arquivo .env citado na [https://github.com/leonardo2000almeida/controller-test/blob/main/README.md#variaveis-de-ambiente](seção abaixo.)
 
 #
 
@@ -76,7 +76,7 @@ Para rodar esse projeto é necessário editar o arquivo src/infrastructure/confi
 #### Criar um contato
 
 ```http
-  POST``` localhost:3000/contact
+  POST localhost:3000/contact
 ```
 
 
