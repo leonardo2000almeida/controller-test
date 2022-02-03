@@ -4,7 +4,7 @@ dotenv.config({ path: "./src/infrastructure/config/config.env" });
 
 export default {
   type: "postgres",
-  host: "localhost",
+  host: process.env.PG_HOST,
   username: process.env.PG_USERNAME,
   password: `${process.env.PG_PASSWORD}`,
   migrationsTransactionMode: "none",

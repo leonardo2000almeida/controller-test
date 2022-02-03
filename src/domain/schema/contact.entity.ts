@@ -11,7 +11,7 @@ export class Contact {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ name: "name", type: "text", nullable: false,  unique: false })
+  @Column({ name: "name", type: "text", nullable: false,  unique: true })
   name: string;
 
   @Column({ name: "email", type: "text", nullable: false, unique: true })
