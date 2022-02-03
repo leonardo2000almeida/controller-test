@@ -38,7 +38,7 @@ instale as dependências
 
 Rode as migrations:
 
-```
+```node
 npm run typeorm migration:run
 ```
 
@@ -48,7 +48,7 @@ Modifique o arquivo .env citado na seção abaixo.
 
 Após modificar o arquivo, rode o comando
 
-```
+```node
 npm run dev
 ```
 ## Variaveis de ambiente
