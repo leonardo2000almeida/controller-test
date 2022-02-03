@@ -1,7 +1,7 @@
 
-<p align="center">
-# List of contacts API
-</p>
+<h1 align="center">
+List of contacts API
+</h1>
 Essa API usa uma arquitetura DDD, onde irá ter regras de negócios, validações para requisições, integrações com o banco de dados Postgres usando ORM.
 
 O banco de dados é rodado localmente através de sua máquina, sendo apenas necessário usar suas credenciais.
