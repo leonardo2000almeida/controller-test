@@ -16,6 +16,13 @@ O servidor por padrão escuta na porta ``` 3000 ```
 - Adaptadores para rotas: src/interface
 ```
 
+# Dependências
+
+| Nome | valor | 
+| :-------- | :--- | 
+|    `id`      |   `string`   |
+
+
 ## Redis
 > Nesse projeto, apenas instalei a imagem oficial do redis no container, e deixei a porta sendo escutada na padrão.
 
