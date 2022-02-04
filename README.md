@@ -18,6 +18,8 @@ O servidor por padrão escuta na porta 3000
 
 ## Rodar localmente
 
+*Para rodar esse projeto, é necssário ter instalado docker, pois o redis roda em um container.*
+
 Clone o projeto
 
 ```shell
@@ -43,15 +45,22 @@ Rode as migrations:
 npm run typeorm migration:run
 ```
 
-Modifique o arquivo .env citado na [seção abaixo](README.md#variaveis-de-ambiente)
+Modifique o arquivo .env citado na Modifique o arquivo .env citado na [seção abaixo](README.md#variaveis-de-ambiente).
 
 #
+
+Rode o container
+
+```shell
+docker compose up
+```
 
 Após modificar o arquivo, rode o comando
 
 ```shell
 npm run dev
 ```
+
 ## Variaveis de ambiente
 
 Para rodar esse projeto é necessário editar o arquivo src/infrastructure/config
