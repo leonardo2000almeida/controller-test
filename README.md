@@ -18,9 +18,21 @@ O servidor por padrão escuta na porta ``` 3000 ```
 
 # Dependências
 
-| Nome | valor | 
-| :-------- | :--- | 
-|    `id`      |   `string`   |
+| Nome              | versão | 
+| :--------         | :--- | 
+|    `dotenv`      |   `^15.0.0`   |
+|    `express`      |   `^4.17.2`   |
+|    `helmet`      |   `^5.0.2`   |
+|    `joi`      |   `^17.6.0`   |
+|    `morgan`      |   `^1.10.0`   |
+|    `pg`      |   `^8.7.1`   |
+|    `redis`      |   `^4.0.3`   |
+|    `typeorm`      |   `^0.2.41`   |
+|    `validations-br`      |   `^1.2.0`   |
+
+
+
+#
 
 
 ## Redis
