@@ -85,7 +85,7 @@ Para rodar esse projeto é necessário editar o arquivo src/infrastructure/confi
 #### Retorna um contato
 
 ```diff
-  + GET localhost:3000/contact/:id
++ GET localhost:3000/contact/:id
 ```
 
 | Param | Tipo | Descrição | Obrigatorio |
@@ -96,7 +96,7 @@ Para rodar esse projeto é necessário editar o arquivo src/infrastructure/confi
 #### Criar um contato
 
 ```diff
-  + POST localhost:3000/contact
++ POST localhost:3000/contact
 ```
 
 
@@ -113,7 +113,7 @@ Para rodar esse projeto é necessário editar o arquivo src/infrastructure/confi
 #### Atualiza um contato, menos o status
 
 ```diff
-  ! PUT localhost:3000/contact/:id
+! PUT localhost:3000/contact/:id
 ```
 
 | Param | Tipo | Descrição | Obrigatorio |
@@ -135,7 +135,7 @@ Para rodar esse projeto é necessário editar o arquivo src/infrastructure/confi
 #### Ativa um contato
 
 ```diff
- ! PUT localhost:3000/contact/:id/active
+! PUT localhost:3000/contact/:id/active
 ```
 
 | Param | Tipo | Descrição | Obrigatorio |
@@ -147,7 +147,7 @@ Para rodar esse projeto é necessário editar o arquivo src/infrastructure/confi
 #### Desativa um contato
 
 ```diff
- - DEL localhost:3000/contact/:id
+- DEL localhost:3000/contact/:id
 ```
 
 | Param | Tipo | Descrição | Obrigatorio |
