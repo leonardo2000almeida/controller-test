@@ -27,7 +27,7 @@ port: 6379
 ## Rodar localmente
 
 ```diff
-*Para rodar esse projeto, - é necssário ter instalado docker, pois o redis roda em um container.*
+- *Para rodar esse projeto, é necssário ter instalado docker, pois o redis roda em um container.*
 ```
 
 Clone o projeto
@@ -84,8 +84,8 @@ Para rodar esse projeto é necessário editar o arquivo src/infrastructure/confi
 ## Rotas da api
 #### Retorna um contato
 
-```http
-  GET localhost:3000/contact/:id
+```diff
+  + GET localhost:3000/contact/:id
 ```
 
 | Param | Tipo | Descrição | Obrigatorio |
@@ -95,8 +95,8 @@ Para rodar esse projeto é necessário editar o arquivo src/infrastructure/confi
 #
 #### Criar um contato
 
-```http
-  POST localhost:3000/contact
+```diff
+  + POST localhost:3000/contact
 ```
 
 
@@ -113,7 +113,7 @@ Para rodar esse projeto é necessário editar o arquivo src/infrastructure/confi
 #### Atualiza um contato, menos o status
 
 ```http
-  PUT localhost:3000/contact/:id
+  ! PUT localhost:3000/contact/:id
 ```
 
 | Param | Tipo | Descrição | Obrigatorio |
@@ -135,7 +135,7 @@ Para rodar esse projeto é necessário editar o arquivo src/infrastructure/confi
 #### Ativa um contato
 
 ```http
-  PUT localhost:3000/contact/:id/active
+ ! PUT localhost:3000/contact/:id/active
 ```
 
 | Param | Tipo | Descrição | Obrigatorio |
@@ -147,7 +147,7 @@ Para rodar esse projeto é necessário editar o arquivo src/infrastructure/confi
 #### Desativa um contato
 
 ```http
-  DEL localhost:3000/contact/:id
+ - DEL localhost:3000/contact/:id
 ```
 
 | Param | Tipo | Descrição | Obrigatorio |
