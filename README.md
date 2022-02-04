@@ -8,7 +8,7 @@ O banco de dados é rodado localmente através de sua máquina, sendo apenas nec
 
 O servidor por padrão escuta na 
 ```diff 
-@@ 3000 
+@@ 3000 @@
 ```
 
 ## Entenda a organização de pastas:
