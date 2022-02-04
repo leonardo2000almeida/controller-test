@@ -112,7 +112,7 @@ Para rodar esse projeto é necessário editar o arquivo src/infrastructure/confi
 #
 #### Atualiza um contato, menos o status
 
-```http
+```diff
   ! PUT localhost:3000/contact/:id
 ```
 
@@ -134,7 +134,7 @@ Para rodar esse projeto é necessário editar o arquivo src/infrastructure/confi
 
 #### Ativa um contato
 
-```http
+```diff
  ! PUT localhost:3000/contact/:id/active
 ```
 
@@ -146,7 +146,7 @@ Para rodar esse projeto é necessário editar o arquivo src/infrastructure/confi
 
 #### Desativa um contato
 
-```http
+```diff
  - DEL localhost:3000/contact/:id
 ```
 
