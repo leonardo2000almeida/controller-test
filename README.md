@@ -16,6 +16,14 @@ O servidor por padrão escuta na porta 3000
 - Adaptadores para rotas: src/interface
 ```
 
+## Redis
+> Nesse projeto, apenas instalei a imagem oficial do redis no container, e deixei a porta sendo escutada na padrão.
+
+```
+port: 6379
+```
+
+
 ## Rodar localmente
 
 *Para rodar esse projeto, é necssário ter instalado docker, pois o redis roda em um container.*
@@ -145,3 +153,4 @@ Para rodar esse projeto é necessário editar o arquivo src/infrastructure/confi
 |    `id`      |   `string`   |     `id do contato`     |        `true`     |
 
 #
+
