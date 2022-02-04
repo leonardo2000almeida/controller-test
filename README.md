@@ -6,9 +6,7 @@ Essa API usa uma arquitetura DDD, onde irá ter regras de negócios, validaçõe
 
 O banco de dados é rodado localmente através de sua máquina, sendo apenas necessário usar suas credenciais.
 
-O servidor por padrão escuta na ```diff  
-@@3000
-```
+O servidor por padrão escuta na ```diff  @@ 3000 ```
 
 ## Entenda a organização de pastas:
 ```
