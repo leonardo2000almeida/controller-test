@@ -26,7 +26,9 @@ port: 6379
 
 ## Rodar localmente
 
-*Para rodar esse projeto, é necssário ter instalado docker, pois o redis roda em um container.*
+```diff
+- *Para rodar esse projeto, é necssário ter instalado docker, pois o redis roda em um container.*
+```
 
 Clone o projeto
 
