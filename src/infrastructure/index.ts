@@ -24,8 +24,9 @@ class Microservice {
   };
 
   setupMiddlewares = (): Microservice => {
-    this.app.use(express.json(),);
+    this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
+    this.app.use(express.text());
     return new Microservice(this.port, this.app);
   };
 

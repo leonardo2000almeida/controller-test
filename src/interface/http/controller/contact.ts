@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import contactUseCases from "../../../application/useCases/contact";
 import addressUsecases from "../../../application/useCases/address";
+import redisUseCases from "../../../application/useCases/redis";
 
 class ContactController {
   static create = async (req: Request, res: Response) => {
@@ -19,7 +20,7 @@ class ContactController {
         });
       }
     } catch (err) {
-      res.status(404).json({
+      res.status(500).json({
         err,
       });
       console.log("Error on class ContactController method: create\n", err);
@@ -27,7 +28,13 @@ class ContactController {
   };
 
   static get = async (req: Request, res: Response) => {
-    res.json({ fun: "fou" });
+    try {
+    } catch (err) {
+      res.status(500).json({
+        err,
+      });
+      console.log("Error on class ContactController method: get\n", err);
+    }
   };
 
   static update = async (req: Request, res: Response) => {
@@ -70,10 +77,6 @@ class ContactController {
       console.log("Error on class ContactController method: delete\n", err);
     }
   };
-
-  static export = async (req: Request, res: Response) => {};
-  
-  static import  = async (req: Request, res: Response) => {};
 
   static active = async (req: Request, res: Response) => {
     try {

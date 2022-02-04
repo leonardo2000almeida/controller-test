@@ -1,9 +1,10 @@
-import { createClient } from "redis";
+import { createClient, RedisClientType } from "redis";
 
 export const redis = async () => {
   try {
     const client = createClient();
-    return await client.connect();
+    await client.connect();
+    return client;
   } catch (err) {
     console.log(err);
   }
