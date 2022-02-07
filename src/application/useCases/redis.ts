@@ -45,7 +45,7 @@ class RedisUseCases {
       const client = await redis();
       let keys = <[string]>await client?.keys("*");
       const keysObject = await keysParser(keys);
-      return await new objToCsv(keysObject).toString();
+      return keys.length > 0 ? await new objToCsv(keysObject).toString() : [];
     } catch (err) {
       console.log("Error on RedisUseCases.getAll", err);
     }
@@ -56,22 +56,17 @@ class RedisUseCases {
       let newContact = contact;
       const client = await redis();
 
-      if (!contact?.Logradouro) {
+      if (contact?.name) {
         newContact = objectToCsvPattern(contact);
       }
 
       await client?.set(
-        `userId - ${contact?.["CPF/CNPJ"]}`,
+        `userId - ${contact.id}`,
         JSON.stringify(newContact)
       );
     } catch (err) {
       console.log("Error on RedisUseCases.insertContact", err);
     }
-  };
-
-  static dropTables = async () => {
-    const client = await redis();
-    await client?.flushAll();
   };
 }
 

@@ -42,7 +42,7 @@ class ContactController {
           status: 200,
         });
       } else {
-        const [contact] = await contactUseCases.readOne(id);
+        const contact = await contactUseCases.get(id);
         await RedisUseCases.insertContact(contact);
 
         if (contact) return res.status(200).json({ contact, status: 200 });
@@ -62,7 +62,8 @@ class ContactController {
       const userExist = await contactUseCases.readOne(req?.params?.id);
 
       if (userExist) {
-        const userUpdate = await contactUseCases.update(req?.body);
+        const contact = Object.assign(req.body, { id: req.params.id });
+        const userUpdate = await contactUseCases.update(contact);
 
         if (userUpdate.affected)
           return res
@@ -123,7 +124,7 @@ class ContactController {
           status: 404,
         });
 
-      if (user?.status === "ativo")
+      if (user.status === "ativo")
         return res.status(200).json({
           message: "User not active, because already is",
           status: 200,

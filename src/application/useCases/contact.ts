@@ -1,6 +1,7 @@
 import { getConnection } from "typeorm";
 import { Contact } from "../../domain/schema/contact.entity";
 import { ContactAddress } from "../../domain/schema/contactAddress.entity";
+import { updateContact } from "../../interface/http/validations/contact";
 import { contactFactory } from "../types/entities";
 
 class ContactUseCases {
@@ -10,17 +11,22 @@ class ContactUseCases {
   };
 
   static readOne = async (id: string) => {
-    const contact = getConnection().createQueryBuilder();
-    return await contact
-      .select()
-      .distinct()
-      .addFrom(Contact, "c")
-      .innerJoin(ContactAddress, "ca", "ca.id = ca.id")
-      .where({ id })
-      .execute();
+    const client = getConnection().getRepository(Contact);
+    return await client.findOne({ where: { id } });
   };
 
-  static update = async (contactToUpdate: Contact) => {
+  static get = async (id: string) => {
+    const [contact] = await getConnection()
+      .createQueryBuilder()
+      .select()
+      .from(Contact, "c")
+      .innerJoin(ContactAddress, "ca", "ca.contactId = c.id")
+      .where("c.id = :id", { id })
+      .execute();
+    return contact;
+  };
+
+  static update = async (contactToUpdate: any) => {
     const contact = getConnection().getRepository(Contact);
     return await contact.update(contactToUpdate.id, contactToUpdate);
   };

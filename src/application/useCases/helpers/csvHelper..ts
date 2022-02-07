@@ -29,5 +29,5 @@ export const objectToCsvPattern = (contact: any) => ({
   Complemento: contact.address.complement,
   Bairro: contact.address.district,
   Cidade: contact.address.city,
-  Estado: contact.address.estado,
+  Estado: contact.address.state,
 });
