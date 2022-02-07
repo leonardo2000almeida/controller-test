@@ -98,136 +98,191 @@ Para rodar esse projeto é necessário editar o arquivo src/infrastructure/confi
 
 ## Rotas da
 
-> Aqui está uma collection do postman para você testar as requisições
+> Collection do postman
 
 ```json
 {
-  "info": {
-    "_postman_id": "d9d90d2f-7e98-4770-8484-37f14330d660",
-    "name": "controller",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-  },
-  "item": [
-    {
-      "name": "Export  contacts",
-      "protocolProfileBehavior": {
-        "disableBodyPruning": true
-      },
-      "request": {
-        "method": "GET",
-        "header": [
-          {
-            "key": "token",
-            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkBIMXRHNE0zIyIsImlhdCI6MTY0MzgzNjQwOSwiZXhwIjoxNjQzODQwMDA5fQ.nR2N-A_PW6yTJ_7pYIu-dkQf0KU1bak3Pn2WvqZ-YdQ",
-            "type": "default"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "Nome,Email,Telefone,CPF/CNPJ,CEP,Logradouro,Número,Complemento,Bairro,Cidade,Estado\r\nFulano da Silva,fulano@email.com,(00) 0000-0000,76038817000110,88801-000,Av. Centenário,1,,Centro,Criciúma,SC\r\nCiclano Ferreira,ciclano@email.com,(00) 0000-0000,63229617053,,,,,,,\r\nBeltrano dos Santos,beltrano@email.com,(00) 9 0000-0000,45310594094,88801-000,,1,,Centro,Criciúma,SC\r\nOutros da Costa,outrossilva@email.com,(00) 0000-0000,89958193086,,Av. Centenário teste,1,,Centro,Criciúma,SC\r\nCliente da Cunha,cliente@email.com,(00) 0000-0000,22718689048,88801-000,,1,,Centro,Criciúma,SC\r\nFornecedor de Souza,fornecedor@email.com,(00) 0000-0000,150706000130,,,,,,,\r\njonathan,jonathan@email.com,(00) 0000-0000,150706000130,,,,,,,\r\n",
-          "options": {
-            "raw": {
-              "language": "text"
-            }
-          }
-        },
-        "url": {
-          "raw": "localhost:3000/contact/export",
-          "host": ["localhost"],
-          "port": "3000",
-          "path": ["contact", "export"]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Import contacts",
-      "request": {
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "Nome,Email,Telefone,CPF/CNPJ,CEP,Logradouro,Número,Complemento,Bairro,Cidade,Estado\r\nFulano da Silva,fulano@email.com,(00) 0000-0000,76038817000110,88801-000,Av. Centenário,1,,Centro,Criciúma,SC\r\nCiclano Ferreira,ciclano@email.com,(00) 0000-0000,63229617053,,,,,,,\r\nBeltrano dos Santos,beltrano@email.com,(00) 9 0000-0000,45310594094,88801-000,,1,,Centro,Criciúma,SC\r\nOutros da Costa,outrossilva@email.com,(00) 0000-0000,89958193086,,Av. Centenário teste,1,,Centro,Criciúma,SC\r\nCliente da Cunha,cliente@email.com,(00) 0000-0000,22718689048,88801-000,,1,,Centro,Criciúma,SC\r\nFornecedor de Souza,fornecedor@email.com,(00) 0000-0000,150706000130,,,,,,,\r\njonathan,jonathan@email.com,(00) 0000-0000,150706000130,,,,,,,\r\n"
-        },
-        "url": {
-          "raw": "localhost:3000/contact/import",
-          "host": ["localhost"],
-          "port": "3000",
-          "path": ["contact", "import"]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Create contact",
-      "request": {
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \"name\": \"Leonardo almeida rodrigues de oliveira\",\r\n    \"email\": \"leonardo16almeida@gmail.com\",\r\n    \"phone\": \"5553991576413\",\r\n    \"type\": \"PF\",\r\n    \"cpfCnpj\": \"04955338022\",\r\n    \"address\": {\r\n        \"city\": \"Rio grande\",\r\n        \"district\": \"Cassino\",\r\n        \"number\": 132,\r\n        \"state\": \"Rio grande do sul\",\r\n        \"zipcode\": \"96207-471\",\r\n        \"street\":\"Paulino Maternal\",\r\n        \"complement\":\"A\"\r\n    }\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "localhost:3000/contact/",
-          "host": ["localhost"],
-          "port": "3000",
-          "path": ["contact", ""]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "disable contact",
-      "request": {
-        "method": "GET",
-        "header": []
-      },
-      "response": []
-    },
-    {
-      "name": "get one",
-      "request": {
-        "method": "GET",
-        "header": []
-      },
-      "response": []
-    },
-    {
-      "name": "active contact",
-      "request": {
-        "method": "PUT",
-        "header": [],
-        "url": {
-          "raw": "localhost:3000/contact/4/active",
-          "host": ["localhost"],
-          "port": "3000",
-          "path": ["contact", "4", "active"]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "New Request",
-      "request": {
-        "method": "GET",
-        "header": []
-      },
-      "response": []
-    },
-    {
-      "name": "update contact",
-      "request": {
-        "method": "GET",
-        "header": []
-      },
-      "response": []
-    }
-  ]
+	"info": {
+		"_postman_id": "d9d90d2f-7e98-4770-8484-37f14330d660",
+		"name": "controller",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Export  contacts",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkBIMXRHNE0zIyIsImlhdCI6MTY0MzgzNjQwOSwiZXhwIjoxNjQzODQwMDA5fQ.nR2N-A_PW6yTJ_7pYIu-dkQf0KU1bak3Pn2WvqZ-YdQ",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "Nome,Email,Telefone,CPF/CNPJ,CEP,Logradouro,Número,Complemento,Bairro,Cidade,Estado\r\nFulano da Silva,fulano@email.com,(00) 0000-0000,76038817000110,88801-000,Av. Centenário,1,,Centro,Criciúma,SC\r\nCiclano Ferreira,ciclano@email.com,(00) 0000-0000,63229617053,,,,,,,\r\nBeltrano dos Santos,beltrano@email.com,(00) 9 0000-0000,45310594094,88801-000,,1,,Centro,Criciúma,SC\r\nOutros da Costa,outrossilva@email.com,(00) 0000-0000,89958193086,,Av. Centenário teste,1,,Centro,Criciúma,SC\r\nCliente da Cunha,cliente@email.com,(00) 0000-0000,22718689048,88801-000,,1,,Centro,Criciúma,SC\r\nFornecedor de Souza,fornecedor@email.com,(00) 0000-0000,150706000130,,,,,,,\r\njonathan,jonathan@email.com,(00) 0000-0000,150706000130,,,,,,,\r\n",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/contact/export",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"contact",
+						"export"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Import contacts",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "Nome,Email,Telefone,CPF/CNPJ,CEP,Logradouro,Número,Complemento,Bairro,Cidade,Estado\r\nFulano da Silva,fulano@email.com,(00) 0000-0000,76038817000110,88801-000,Av. Centenário,1,,Centro,Criciúma,SC\r\nCiclano Ferreira,ciclano@email.com,(00) 0000-0000,63229617053,,,,,,,\r\nBeltrano dos Santos,beltrano@email.com,(00) 9 0000-0000,45310594094,88801-000,,1,,Centro,Criciúma,SC\r\nOutros da Costa,outrossilva@email.com,(00) 0000-0000,89958193086,,Av. Centenário teste,1,,Centro,Criciúma,SC\r\nCliente da Cunha,cliente@email.com,(00) 0000-0000,22718689048,88801-000,,1,,Centro,Criciúma,SC\r\nFornecedor de Souza,fornecedor@email.com,(00) 0000-0000,150706000130,,,,,,,\r\njonathan,jonathan@email.com,(00) 0000-0000,150706000130,,,,,,,\r\n"
+				},
+				"url": {
+					"raw": "localhost:3000/contact/import",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"contact",
+						"import"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create contact",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Leonardo almeida rodrigues de oliveira\",\r\n    \"email\": \"leonardo16almeida@gmail.com\",\r\n    \"phone\": \"5553991576413\",\r\n    \"type\": \"PF\",\r\n    \"cpfCnpj\": \"04955338022\",\r\n    \"address\": {\r\n        \"city\": \"Rio grande\",\r\n        \"district\": \"Cassino\",\r\n        \"number\": 132,\r\n        \"state\": \"Rio grande do sul\",\r\n        \"zipcode\": \"96207-471\",\r\n        \"street\":\"Paulino Maternal\",\r\n        \"complement\":\"A\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/contact/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"contact",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "disable contact",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/contact/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"contact",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get one",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/contact/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"contact",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "active contact",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/contact/4/active",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"contact",
+						"4",
+						"active"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update contact",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"teste de update \"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/contact/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"contact",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
 }
 ```
 

@@ -65,10 +65,13 @@ class ContactController {
         const contact = Object.assign(req.body, { id: req.params.id });
         const userUpdate = await contactUseCases.update(contact);
 
-        if (userUpdate.affected)
+        if (userUpdate.affected) {
+          const contactUpdated = await contactUseCases.get(req.params.id);
+          await RedisUseCases.insertContact(contactUpdated);
           return res
             .status(201)
             .json({ message: "User updated with success!", status: 201 });
+        }
       } else {
         return res
           .status(404)
