@@ -175,3 +175,22 @@ Para rodar esse projeto é necessário editar o arquivo src/infrastructure/confi
 
 #
 
+
+#### Importar um csv de contatos
+
+```diff
++ POST localhost:3000/contact/import
+```
+
+| Body | Tipo | Descrição | Obrigatorio |
+| :-------- | :--- | :-------- | :---------- | 
+|    `id`      |   Raw text   |     `csv com contatos`     |        `true`     |
+
+#
+
+#### export um csv de contatos
+
+```diff
++ GET localhost:3000/contact/export
+```
+#
