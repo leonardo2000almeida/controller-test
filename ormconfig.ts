@@ -9,7 +9,7 @@ export default {
   password: `${process.env.PG_PASSWORD}`,
   migrationsTransactionMode: "none",
   migrations: ["./src/infrastructure/orm/migrations/*.ts"],
-  entities: ["./src/infrastructure/orm/schema/*.entity.ts"],
+  entities: ["./src/domain/schema/*.entity.ts"],
   cli: {
     migrationsDir: "src/infrastructure/orm/migrations",
   },

@@ -1,5 +1,7 @@
-const parser = (csvString: string): [{}] => {
-  let contacts: [{}] = [];
+import { csvContact } from "../../types/contact";
+
+export const parser = (csvString: string): csvContact[] => {
+  const contacts: object[] = [];
   const [keys, ...values] = csvString.split("\n");
   const headers = keys.trim().split(",");
 
@@ -13,27 +15,19 @@ const parser = (csvString: string): [{}] => {
 
     contacts.push(contact);
   });
-  return contacts;
+  return <[csvContact]>contacts;
 };
 
-export const returnContactObject = (csv: string) => {
-  try {
-    const contacts = parser(csv);
-
-    contacts.forEach((contact: any) => {
-      if (contact.Nome) {
-        if (contact["CPF/CNPJ"].lenght == 11)
-          Object.assign(contact, { type: "PF" });
-        else Object.assign(contact, { type: "PJ" });
-      }
-    });
-    return contacts;
-  } catch (err) {
-    return err;
-  }
-};
-
-export const excludeHeader = (csv: string) => {
-  const [keys, ...values] = csv.split("\n");
- return values.reduce((csv, key) => `${csv}\n${key}`);
-};
+export const objectToCsvPattern = (contact: any) => ({
+  Nome: contact.name,
+  Email: contact.email,
+  Telefone: contact.phone,
+  "CPF/CNPJ": contact.cpfCnpj,
+  Tipo: contact.type,
+  CEP: contact.address.zipcode,
+  Número: contact.address.number,
+  Complemento: contact.address.complement,
+  Bairro: contact.address.district,
+  Cidade: contact.address.city,
+  Estado: contact.address.estado,
+});

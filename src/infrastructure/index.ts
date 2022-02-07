@@ -1,4 +1,4 @@
-import express, { Application } from "express";
+import express, { Application, json, urlencoded, text } from "express";
 import helmet from "helmet";
 import dotenv from "dotenv";
 import morgan from "morgan";
@@ -24,9 +24,13 @@ class Microservice {
   };
 
   setupMiddlewares = (): Microservice => {
-    this.app.use(express.json());
-    this.app.use(express.urlencoded({ extended: true }));
-    this.app.use(express.text());
+    this.app.use(
+      json(),
+      text(),
+      urlencoded({ extended: true }),
+      morgan("tiny"),
+      helmet()
+    );
     return new Microservice(this.port, this.app);
   };
 
@@ -35,7 +39,7 @@ class Microservice {
     dotenv.config({ path: join(__dirname, "./config/config.env") });
 
     this.app.listen(this.port, async () => {
-      await redis();
+      // await redis();
       await connectToPostgres();
       console.log(`Server listen on port: ${this.port}`);
     });

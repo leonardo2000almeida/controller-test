@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import contactUseCases from "../../../application/useCases/contact";
 import addressUsecases from "../../../application/useCases/address";
-import redisUseCases from "../../../application/useCases/redis";
+import RedisUseCases from "../../../application/useCases/redis";
 
 class ContactController {
   static create = async (req: Request, res: Response) => {
@@ -9,19 +9,24 @@ class ContactController {
       const newContact = await contactUseCases.create(req.body);
 
       if (newContact) {
-        await addressUsecases.create({
+        const address = await addressUsecases.create({
           ...req.body.address,
-          contacts: newContact?.id,
+          contact: newContact?.id,
         });
+
+        Object.assign(address, newContact);
+
+        await RedisUseCases.insertContact(address);
 
         res.status(201).json({
           message: "Contact save with success!",
           status: 201,
         });
       }
-    } catch (err) {
+    } catch (err: any) {
       res.status(500).json({
-        err,
+        message: err?.detail,
+        status: 500,
       });
       console.log("Error on class ContactController method: create\n", err);
     }
@@ -29,9 +34,24 @@ class ContactController {
 
   static get = async (req: Request, res: Response) => {
     try {
-    } catch (err) {
+      const { id } = req.params;
+      const tryRedis = await RedisUseCases.get(id);
+      if (tryRedis) {
+        return res.status(200).json({
+          contact: JSON.parse(tryRedis),
+          status: 200,
+        });
+      } else {
+        const [contact] = await contactUseCases.readOne(id);
+        await RedisUseCases.insertContact(contact);
+
+        if (contact) return res.status(200).json({ contact, status: 200 });
+        else return res.status(404).json({ contact: "not found", status: 404 });
+      }
+    } catch (err: any) {
       res.status(500).json({
-        err,
+        message: err?.detail,
+        status: 500,
       });
       console.log("Error on class ContactController method: get\n", err);
     }
@@ -39,6 +59,20 @@ class ContactController {
 
   static update = async (req: Request, res: Response) => {
     try {
+      const userExist = await contactUseCases.readOne(req?.params?.id);
+
+      if (userExist) {
+        const userUpdate = await contactUseCases.update(req?.body);
+
+        if (userUpdate.affected)
+          return res
+            .status(201)
+            .json({ message: "User updated with success!", status: 201 });
+      } else {
+        return res
+          .status(404)
+          .json({ message: "User not found!", status: 404 });
+      }
     } catch (err) {
       console.log("Error on class ContactController method: update\n", err);
     }
@@ -68,9 +102,9 @@ class ContactController {
           message: "User disabled",
           status: 201,
         });
-    } catch (err) {
+    } catch (err: any) {
       res.status(500).json({
-        message: err,
+        message: err?.detail,
         status: 500,
       });
 
@@ -104,9 +138,9 @@ class ContactController {
           message: "User actived",
           status: 201,
         });
-    } catch (err) {
+    } catch (err: any) {
       res.status(500).json({
-        message: err,
+        message: err?.detail,
         status: 500,
       });
 

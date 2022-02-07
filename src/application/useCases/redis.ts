@@ -1,29 +1,77 @@
 import { redis } from "../../infrastructure/repository/redis";
-import { excludeHeader, returnContactObject } from "./helpers/csvHelper.";
-import objToCsv from "objects-to-csv";
+import { objectToCsvPattern, parser } from "./helpers/csvHelper.";
+import objToCsv from "objects-to-csv/";
+import { keysParser } from "./helpers/redisHelper";
+import { csvContact } from "../types/contact";
 
 class RedisUseCases {
-  static create = async (csv: string) => {
-    const contacts: any = returnContactObject(csv) || [];
-    const csvOld = await this.get();
-    const client = await redis();
+  static import = async (csv: string) => {
+    try {
+      const contacts = parser(csv);
 
-    const csvToImport = await new objToCsv(contacts).toString();
+      for (let index = 0; index < contacts.length; index++) {
+        const contact: any = contacts[index];
+        contact.type = contact.cpfCnpj.length === 11 ? "PF" : "PJ";
 
-    if (csvOld?.includes("[object")) {
-      await client?.SET("csv", csvToImport);
-    } else {
-      await client?.SET("csv", csvToImport + excludeHeader(csvToImport));
+        await this.insertContact(contact);
+      }
+
+      return true;
+    } catch (err) {
+      console.log("error on RedisUseCases.import: \n", err);
     }
   };
 
-  static get = async () => {
+  static get = async (id: string) => {
     try {
       const client = await redis();
-      return client?.get("csv");
+      return client?.get(`userId - ${id}`);
     } catch (err) {
-      return "error";
+      console.log("Error on RedisUseCases.get", err);
     }
+  };
+
+  static getByKey = async (key: string) => {
+    try {
+      const client = await redis();
+      return client?.get(key);
+    } catch (err) {
+      console.log("Error on RedisUseCases.getByKey", err);
+    }
+  };
+
+  static getAll = async () => {
+    try {
+      const client = await redis();
+      let keys = <[string]>await client?.keys("*");
+      const keysObject = await keysParser(keys);
+      return await new objToCsv(keysObject).toString();
+    } catch (err) {
+      console.log("Error on RedisUseCases.getAll", err);
+    }
+  };
+
+  static insertContact = async (contact: any) => {
+    try {
+      let newContact = contact;
+      const client = await redis();
+
+      if (!contact?.Logradouro) {
+        newContact = objectToCsvPattern(contact);
+      }
+
+      await client?.set(
+        `userId - ${contact?.["CPF/CNPJ"]}`,
+        JSON.stringify(newContact)
+      );
+    } catch (err) {
+      console.log("Error on RedisUseCases.insertContact", err);
+    }
+  };
+
+  static dropTables = async () => {
+    const client = await redis();
+    await client?.flushAll();
   };
 }
 
