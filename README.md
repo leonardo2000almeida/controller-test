@@ -98,6 +98,8 @@ Para rodar esse projeto é necessário editar o arquivo src/infrastructure/confi
 
 ## Rotas da api
 
+[Collection com exemplos](#collection-do-postman)
+
 #### Retorna um contato
 
 ```diff
