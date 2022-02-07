@@ -96,9 +96,103 @@ Para rodar esse projeto é necessário editar o arquivo src/infrastructure/confi
 `PG_USERNAME=USUARIO_DO_SEU_POSTGRES`
 `PG_DATABASE=listOfContacts`
 
-## Rotas da
+## Rotas da api
 
-> Collection do postman
+#### Retorna um contato
+
+```diff
++ GET localhost:3000/contact/:id
+```
+
+| Param | Tipo     | Descrição                | Obrigatorio |
+| :---- | :------- | :----------------------- | :---------- |
+| `id`  | `string` | `id do contato desjeado` | `true`      |
+
+#
+
+#### Criar um contato
+
+```diff
++ POST localhost:3000/contact
+```
+
+| Body      | Tipo     | Descrição                                                                          | Obrigatorio |
+| :-------- | :------- | :--------------------------------------------------------------------------------- | :---------- |
+| `name`    | `string` | `nome completo`                                                                    | `true`      |
+| `email`   | `string` | `email do usuário`                                                                 | `true`      |
+| `phone`   | `string` | `celular do usuário`                                                               | `true`      |
+| `type`    | `string` | `PF OU PJ`                                                                         | `true`      |
+| `cpfCnpj` | `string` | `PF = CPF, PJ = CNPJ`                                                              | `true`      |
+| `address` | `objeto` | `{ zipcode, street, number, complement (não obrigatorio), district, city, state }` | `true`      |
+
+#
+
+#### Atualiza um contato, menos o status
+
+```diff
+! PUT localhost:3000/contact/:id
+```
+
+| Param | Tipo     | Descrição       | Obrigatorio |
+| :---- | :------- | :-------------- | :---------- |
+| `id`  | `string` | `id do contato` | `true`      |
+
+| Body      | Tipo     | Descrição                                                                          | Obrigatorio |
+| :-------- | :------- | :--------------------------------------------------------------------------------- | :---------- |
+| `name`    | `string` | `nome completo`                                                                    | `false`     |
+| `email`   | `string` | `email do usuário`                                                                 | `false`     |
+| `phone`   | `string` | `celular do usuário`                                                               | `false`     |
+| `type`    | `string` | `PF OU PJ`                                                                         | `false`     |
+| `cpfCnpj` | `string` | `PF = CPF, PJ = CNPJ`                                                              | `false`     |
+| `address` | `objeto` | `{ zipcode, street, number, complement (não obrigatorio), district, city, state }` | `false`     |
+
+#
+
+#### Ativa um contato
+
+```diff
+! PUT localhost:3000/contact/:id/active
+```
+
+| Param | Tipo     | Descrição       | Obrigatorio |
+| :---- | :------- | :-------------- | :---------- |
+| `id`  | `string` | `id do contato` | `true`      |
+
+#
+
+#### Desativa um contato
+
+```diff
+- DEL localhost:3000/contact/:id
+```
+
+| Param | Tipo     | Descrição       | Obrigatorio |
+| :---- | :------- | :-------------- | :---------- |
+| `id`  | `string` | `id do contato` | `true`      |
+
+#
+
+#### Importar um csv de contatos
+
+```diff
++ POST localhost:3000/contact/import
+```
+
+| Body | Tipo     | Descrição          | Obrigatorio |
+| :--- | :------- | :----------------- | :---------- |
+| `id` | Raw text | `csv com contatos` | `true`      |
+
+#
+
+#### export um csv de contatos
+
+```diff
++ GET localhost:3000/contact/export
+```
+
+#
+
+# Collection do postman
 
 ```json
 {
@@ -285,97 +379,3 @@ Para rodar esse projeto é necessário editar o arquivo src/infrastructure/confi
 	]
 }
 ```
-
-#### Retorna um contato
-
-```diff
-+ GET localhost:3000/contact/:id
-```
-
-| Param | Tipo     | Descrição                | Obrigatorio |
-| :---- | :------- | :----------------------- | :---------- |
-| `id`  | `string` | `id do contato desjeado` | `true`      |
-
-#
-
-#### Criar um contato
-
-```diff
-+ POST localhost:3000/contact
-```
-
-| Body      | Tipo     | Descrição                                                                          | Obrigatorio |
-| :-------- | :------- | :--------------------------------------------------------------------------------- | :---------- |
-| `name`    | `string` | `nome completo`                                                                    | `true`      |
-| `email`   | `string` | `email do usuário`                                                                 | `true`      |
-| `phone`   | `string` | `celular do usuário`                                                               | `true`      |
-| `type`    | `string` | `PF OU PJ`                                                                         | `true`      |
-| `cpfCnpj` | `string` | `PF = CPF, PJ = CNPJ`                                                              | `true`      |
-| `address` | `objeto` | `{ zipcode, street, number, complement (não obrigatorio), district, city, state }` | `true`      |
-
-#
-
-#### Atualiza um contato, menos o status
-
-```diff
-! PUT localhost:3000/contact/:id
-```
-
-| Param | Tipo     | Descrição       | Obrigatorio |
-| :---- | :------- | :-------------- | :---------- |
-| `id`  | `string` | `id do contato` | `true`      |
-
-| Body      | Tipo     | Descrição                                                                          | Obrigatorio |
-| :-------- | :------- | :--------------------------------------------------------------------------------- | :---------- |
-| `name`    | `string` | `nome completo`                                                                    | `false`     |
-| `email`   | `string` | `email do usuário`                                                                 | `false`     |
-| `phone`   | `string` | `celular do usuário`                                                               | `false`     |
-| `type`    | `string` | `PF OU PJ`                                                                         | `false`     |
-| `cpfCnpj` | `string` | `PF = CPF, PJ = CNPJ`                                                              | `false`     |
-| `address` | `objeto` | `{ zipcode, street, number, complement (não obrigatorio), district, city, state }` | `false`     |
-
-#
-
-#### Ativa um contato
-
-```diff
-! PUT localhost:3000/contact/:id/active
-```
-
-| Param | Tipo     | Descrição       | Obrigatorio |
-| :---- | :------- | :-------------- | :---------- |
-| `id`  | `string` | `id do contato` | `true`      |
-
-#
-
-#### Desativa um contato
-
-```diff
-- DEL localhost:3000/contact/:id
-```
-
-| Param | Tipo     | Descrição       | Obrigatorio |
-| :---- | :------- | :-------------- | :---------- |
-| `id`  | `string` | `id do contato` | `true`      |
-
-#
-
-#### Importar um csv de contatos
-
-```diff
-+ POST localhost:3000/contact/import
-```
-
-| Body | Tipo     | Descrição          | Obrigatorio |
-| :--- | :------- | :----------------- | :---------- |
-| `id` | Raw text | `csv com contatos` | `true`      |
-
-#
-
-#### export um csv de contatos
-
-```diff
-+ GET localhost:3000/contact/export
-```
-
-#
